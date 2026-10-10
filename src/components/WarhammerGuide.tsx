@@ -59,6 +59,7 @@ export function WarhammerGuide() {
           >
             <option value="g">General</option>
             <option value="ac">Adeptus Custodes</option>
+            <option value="ty">Tyranids</option>
             <option value="we">World Eaters</option>
           </select>
           <ThemeToggle />

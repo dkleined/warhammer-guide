@@ -140,6 +140,18 @@ export const TIPS_CUSTODES: Record<string, { m?: string[]; o?: string[] }> = {
   "End of turn": { m: ["Check coherency - with 2-3 model units, one bad pile-in can break coherency.", "Score your mission objectives. Custodes excel at holding objectives with their high OC and durability.", "Remember: Custodes win by playing the mission, not by tabling the opponent. Prioritize objectives."] }
 };
 
+export const TIPS_TYRANIDS: Record<string, { m?: string[]; o?: string[] }> = {
+  "Start of battle round": { m: ["Shadow in the Warp: Enemy units within 12\" of your SYNAPSE units subtract 1 from Battle-shock tests. Stack multiple SYNAPSE units for board control.", "Synapse Network: Your SYNAPSE units project Synapse range - keep key units within 6\" of a SYNAPSE model to benefit from army abilities.", "Hyper-Adaptation: If using the Invasion Fleet detachment, your army gains an adaptation at the start of the game. Remember which one you chose.", "Hive Fleet abilities vary - Leviathan gives 5+ Feel No Pain to SYNAPSE, Kraken gives Fall Back and Charge, Behemoth gives +1 to charge rolls."] },
+  "Battle-shock": { m: ["Tyranids have mixed Leadership - Synapse creatures are Ld 7+ or better, but many smaller bugs are Ld 8+ (42% pass rate).", "Shadow in the Warp makes enemy battle-shock harder within 12\" of SYNAPSE - position aggressively to debuff key enemy units.", "Termagants and Hormagaunts are Ld 8+ - they will fail often. Use them as screens, not objective holders.", "Hive Tyrants and Swarmlords are Ld 6+ (72% pass) - your most reliable units for holding objectives."] },
+  "Command abilities": { m: ["Neurolictor: Hidden Hunter lets it redeploy or go into reserves at the start of any phase - very flexible.", "Tervigon: Spawn Termagants ability triggers in your Command phase - spawn up to 2D6 Termagants within 6\".", "Tyranid Prime: Alpha Warrior gives re-roll 1s to hit for nearby WARRIOR units.", "Check your Hive Fleet rules for Command phase abilities."] },
+  "Move units": { m: ["Hormagaunts move 10\" and can Advance and Charge (Bounding Leap) - your fastest infantry.", "Genestealers move 8\" with Scouts 8\" - they can be in the enemy's face turn 1.", "Gargoyles have FLY and move 12\" - excellent for grabbing distant objectives.", "Trygon and Mawloc have Deep Strike - arrive from round 2, more than 8\" from enemies. Mawloc's Terror from the Deep deals mortal wounds on arrival.", "Lictors have Infiltrators and Lone Operative - deploy them forward to threaten characters or grab objectives.", "Haruspex and Carnifex are slow (7-8\") - use Tyrannocytes to deliver them or start them forward.", "Synapse range is 6\" - keep your swarm units within range or they lose key abilities."], o: ["Raveners: Subterranean Assault lets them arrive from reserves within 1\" of a friendly unit that arrived this turn - combo with Trygon."] },
+  "Shoot": { m: ["Tyranids shooting is mostly short-ranged. Hive Guard (36\") and Exocrines (36\") are your longest-range options.", "Exocrine: Bio-plasmic Barrage is Heavy - don't move it for +1 to hit. Symbiotic Targeting gives +1 to hit if a SYNAPSE unit is nearby.", "Tyrannofex with Rupture Cannon is S18 AP-4 D6+2 - your best anti-tank shooting.", "Biovores fire Spore Mines that can block movement and deal mortal wounds.", "Pyrovores have Torrent flamers - auto-hit, great for clearing infantry.", "Deathspitters and Devourers are Assault - you can Advance and shoot with swarm units."], o: ["Venomthropes give -1 to hit against nearby units - keep them central to protect key monsters."] },
+  "Charge": { m: ["Hormagaunts can Advance and Charge - use them to tie up enemy shooting units early.", "Carnifex with Bone Mace gets +1 to charge rolls. Living Battering Ram gives mortal wounds on the charge.", "Screamer-Killers re-roll charges and get +1 to hit on the charge.", "Genestealers have 4 Attacks each at S4 AP-2 - devastating on the charge against light infantry.", "Hive Tyrant with Lash Whip and Bonesword is a character killer - 6 attacks at S8 AP-2 D3.", "Swarmlord gives a nearby unit Fights First - combo with a big charge."], o: ["Lictor: Feeder Tendrils lets it Heroic Intervention for free - keep them near objectives to counter-charge."] },
+  "Fight": { m: ["Genestealers: Vanguard Predator gives them Fights First if they charged - strike before the enemy can hit back.", "Carnifex: Crushing Claws are Sx2 AP-3 D3 - use against vehicles and monsters. Scything Talons give extra attacks against hordes.", "Hive Tyrant: Monstrous Bonesword is S8 AP-2 D3 with [DEVASTATING WOUNDS] - fish for 6s to wound.", "Swarmlord: Bone Sabres are S9 AP-3 D3 with [TWIN-LINKED] - re-roll wounds for reliability.", "Haruspex: Grasping Tongue pulls enemies into engagement range, then Ravenous Maw eats them.", "Toxicrene: Toxic Lashes are [ANTI-INFANTRY 2+] - auto-wound infantry on 2s."], o: ["Old One Eye gives nearby CARNIFEX units +1 to hit in melee - keep your dakkafexes together."] },
+  "Consolidate": { m: ["Swarm units can consolidate onto objectives easily due to large model counts.", "Hormagaunts: Bounding Leap lets them pile in and consolidate 6\" instead of 3\" - reach new targets or objectives.", "Be careful with large units - coherency can be tricky after pile-in and consolidation."] },
+  "End of turn": { m: ["Large swarm units (30 Termagants, 20 Hormagaunts) spread out fast - check coherency carefully.", "Tervigon can replenish Termagants in your Command phase - keep damaged units near her.", "Score objectives - Tyranids excel at flooding the board with bodies. Use your numbers."] }
+};
+
 export const SETUP_STEPS = [
   ["Generate your mission", "Use the mission deck. It sets the battlefield size, terrain guidance, deployment map, army size, who takes the first turn, how many battle rounds are played (usually five) and how to win.", "Intro p5"],
   ["Create the battlefield", "Place terrain features inside terrain areas (a mat boundary, a single feature, or several features that mark out an area). Features are Exposed, Light or Dense. Leave room for MONSTER/VEHICLE models to move around dense terrain.", "13.01-13.05, p46"],
@@ -159,7 +171,7 @@ export function generateSequence(): SequenceItem[] {
   return seq;
 }
 
-export function getTipsFor(stepTitle: string, isMyTurn: boolean, faction: 'g' | 'we' | 'ac'): Array<[string, string[]]> {
+export function getTipsFor(stepTitle: string, isMyTurn: boolean, faction: 'g' | 'we' | 'ac' | 'ty'): Array<[string, string[]]> {
   const key = isMyTurn ? 'm' : 'o';
   const out: Array<[string, string[]]> = [];
   
@@ -179,6 +191,13 @@ export function getTipsFor(stepTitle: string, isMyTurn: boolean, faction: 'g' | 
     const acTips = TIPS_CUSTODES[stepTitle];
     if (acTips && acTips[key]) {
       out.push(["Adeptus Custodes tips", acTips[key]!]);
+    }
+  }
+  
+  if (faction === 'ty') {
+    const tyTips = TIPS_TYRANIDS[stepTitle];
+    if (tyTips && tyTips[key]) {
+      out.push(["Tyranids tips", tyTips[key]!]);
     }
   }
   

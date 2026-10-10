@@ -33,4 +33,4 @@ export interface GameState {
   fac: Faction;
 }
 
-export type Faction = 'g' | 'we' | 'ac';
+export type Faction = 'g' | 'we' | 'ac' | 'ty';

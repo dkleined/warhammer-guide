@@ -86,7 +86,12 @@ export function GuideView({
             <div key={idx} className="collapse collapse-arrow bg-base-300 mt-2">
               <input type="checkbox" defaultChecked />
               <div className="collapse-title font-header text-lg py-2 min-h-0">
-                <span className={title.includes('World Eaters') ? 'text-error' : title.includes('Custodes') ? 'text-warning' : 'text-primary/80'}>
+                <span className={
+                  title.includes('World Eaters') ? 'text-error' : 
+                  title.includes('Custodes') ? 'text-warning' : 
+                  title.includes('Tyranids') ? 'text-purple-400' : 
+                  'text-primary/80'
+                }>
                   {title}
                 </span>
               </div>
