@@ -44,10 +44,10 @@ export function WarhammerGuide() {
       {/* Header */}
       <header className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
         <div>
-          <h1 className="font-header text-2xl sm:text-3xl text-secondary font-bold">
-            Warhammer 40,000 · 11th Edition
+          <h1 className="font-header text-2xl sm:text-3xl font-bold">
+            Warhammer 40,000 <span className="text-primary">·</span> 11th Edition
           </h1>
-          <p className="text-sm opacity-70">
+          <p className="text-sm opacity-50">
             A step-by-step guide built from the Core Rules.
           </p>
         </div>

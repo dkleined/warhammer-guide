@@ -53,16 +53,16 @@ export function DiceRoller() {
     <div className="space-y-4">
       {/* Quick Roll Buttons */}
       <div className="grid grid-cols-2 gap-2">
-        <button onClick={rollCharge} className="btn btn-primary btn-sm">
+        <button onClick={rollCharge} className="btn btn-outline btn-sm">
           🎲 Charge (2D6)
         </button>
-        <button onClick={rollAdvance} className="btn btn-secondary btn-sm">
+        <button onClick={rollAdvance} className="btn btn-outline btn-sm">
           🎲 Advance (D6)
         </button>
-        <button onClick={rollBattleShock} className="btn btn-warning btn-sm">
+        <button onClick={rollBattleShock} className="btn btn-outline btn-sm">
           🎲 Battle-shock
         </button>
-        <button onClick={() => rollD6Multi(6)} className="btn btn-accent btn-sm">
+        <button onClick={() => rollD6Multi(6)} className="btn btn-outline btn-sm">
           🎲 6D6
         </button>
       </div>
@@ -77,12 +77,12 @@ export function DiceRoller() {
             max="12"
             value={chargeDistance}
             onChange={(e) => setChargeDistance(Number(e.target.value))}
-            className="range range-primary range-xs flex-1"
+            className="range range-xs flex-1"
           />
-          <span className="badge badge-primary">{chargeDistance}&quot;</span>
+          <span className="badge badge-ghost">{chargeDistance}&quot;</span>
         </div>
         <div className="text-sm mt-1">
-          Success: <span className="font-bold text-primary">{chargeProbability(chargeDistance)}%</span>
+          Success: <span className="font-bold">{chargeProbability(chargeDistance)}%</span>
         </div>
       </div>
 
@@ -96,12 +96,12 @@ export function DiceRoller() {
             max="9"
             value={leadership}
             onChange={(e) => setLeadership(Number(e.target.value))}
-            className="range range-warning range-xs flex-1"
+            className="range range-xs flex-1"
           />
-          <span className="badge badge-warning">{leadership}+</span>
+          <span className="badge badge-ghost">{leadership}+</span>
         </div>
         <div className="text-sm mt-1">
-          Pass: <span className="font-bold text-warning">{battleShockProbability(leadership)}%</span>
+          Pass: <span className="font-bold">{battleShockProbability(leadership)}%</span>
         </div>
       </div>
 

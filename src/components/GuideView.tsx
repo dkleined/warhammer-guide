@@ -38,21 +38,21 @@ export function GuideView({
   return (
     <div className="space-y-3">
       {/* Sticky position indicator */}
-      <div className="sticky top-0 z-10 alert bg-base-200 border border-primary shadow-lg">
+      <div className="sticky top-0 z-10 bg-base-200 border border-base-300 rounded-lg p-3 shadow-lg">
         <div className="flex flex-wrap items-center justify-between gap-2 w-full">
           <div className="flex flex-wrap items-center gap-2">
-            <span className="badge badge-primary font-semibold">Round {state.round}</span>
+            <span className="badge badge-outline font-semibold">Round {state.round}</span>
             <span className="opacity-50">·</span>
-            <span className={isMine ? "text-primary font-medium" : "text-secondary font-medium"}>{turnLabel}</span>
+            <span className={isMine ? "font-medium" : "text-secondary font-medium"}>{turnLabel}</span>
             {step.ph >= 0 && (
               <>
                 <span className="opacity-50">·</span>
-                <span className="text-primary font-header text-lg">{PHASES[step.ph]} phase</span>
+                <span className="font-header text-lg">{PHASES[step.ph]} phase</span>
               </>
             )}
           </div>
-          <span className="text-sm opacity-70">
-            Step {state.pos + 1} / {totalSteps}
+          <span className="text-sm opacity-50">
+            {state.pos + 1} / {totalSteps}
           </span>
         </div>
       </div>
@@ -60,10 +60,10 @@ export function GuideView({
       {/* Current step card */}
       <div className={`card bg-base-200 shadow-xl border-l-4 ${isMine ? 'border-l-primary' : 'border-l-secondary'}`}>
         <div className="card-body p-4 sm:p-6">
-          <h2 className="card-title font-header text-xl sm:text-2xl text-primary">{step.t}</h2>
-          <div className="badge badge-outline badge-sm">Rules {step.r}</div>
+          <h2 className="card-title font-header text-xl sm:text-2xl">{step.t}</h2>
+          <div className="badge badge-ghost badge-sm">Rules {step.r}</div>
 
-          <h3 className="font-header text-lg mt-4 mb-1 text-primary/80">
+          <h3 className="font-header text-lg mt-4 mb-1 opacity-80">
             {step.both ? "What to do" : isMine ? "What you do" : "What happens, and what you can do"}
           </h3>
           <ul className="list-disc pl-5 space-y-1.5 text-sm sm:text-base">
